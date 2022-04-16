@@ -33,3 +33,14 @@ function displayOutcome(outcome, playerSelection, computerSelection) {
       break;
   }
 }
+
+function askPlayerSelection() {
+  let input = prompt("Choose between rock, paper and scissors: ");
+  if (input != "rock" &&
+      input != "paper" &&
+      input != "scissors") {
+        alert("Invalid Input! Please type a valid option.");
+        askPlayerSelection();
+  }
+  return input;
+}
