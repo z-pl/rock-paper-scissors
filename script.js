@@ -53,3 +53,11 @@ function playGames(rounds) {
     displayOutcome(outcome, playerTurn, computerTurn);
   }
 }
+
+function startGame() {
+  alert("Welcome to my original ROCK, PAPER, SCISSORS game.")
+  rounds = Number(prompt("How many rounds would you like to play? ", 10));
+  playGames(rounds);
+}
+
+startGame();
