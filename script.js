@@ -19,3 +19,17 @@ function playRound(playerSelection, computerSelection) {
   }
   return gameState
 }
+
+function displayOutcome(outcome, playerSelection, computerSelection) {
+  switch (outcome) {
+    case 0:
+      console.log(`You LOSE! ${computerSelection} beats ${playerSelection}`);
+      break;
+    case 1:
+      console.log(`You WIN! ${playerSelection} beats ${computerSelection}`);
+      break;
+    case -1:
+      console.log(`It's a TIE! ${playerSelection} ties with ${computerSelection}`);
+      break;
+  }
+}
