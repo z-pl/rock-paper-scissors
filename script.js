@@ -1,3 +1,10 @@
+const rockBtn = document.querySelector(".btn-rock");
+const paperBtn = document.querySelector(".btn-paper");
+const scissorsBtn = document.querySelector(".btn-scissors");
+
+
+
+
 function computerPlay() {
   let computerOptions = ["rock", "paper", "scissors"];
   let randomIndex = Math.floor(Math.random() * computerOptions.length);
@@ -23,13 +30,13 @@ function playRound(playerSelection, computerSelection) {
 function displayOutcome(outcome, playerSelection, computerSelection) {
   switch (outcome) {
     case 0:
-      alert(`You LOSE! ${computerSelection} beats ${playerSelection}`);
+      console.log(`You LOSE! ${computerSelection} beats ${playerSelection}`);
       break;
     case 1:
-      alert(`You WIN! ${playerSelection} beats ${computerSelection}`);
+      console.log(`You WIN! ${playerSelection} beats ${computerSelection}`);
       break;
     case -1:
-      alert(`It's a TIE! ${playerSelection} ties with ${computerSelection}`);
+      console.log(`It's a TIE! ${playerSelection} ties with ${computerSelection}`);
       break;
   }
 }
@@ -39,19 +46,19 @@ function askPlayerSelection() {
   if (input != "rock" &&
       input != "paper" &&
       input != "scissors") {
-        alert("Invalid Input! Please type a valid option.");
+        console.log("Invalid Input! Please type a valid option.");
         askPlayerSelection();
   }
   return input;
 }
 
-function playGames(rounds) {
-  for (let i = 0; i < rounds; i++) {
+function playGames(playerTurn) {
+  //for (let i = 0; i < rounds; i++) {
     computerTurn = computerPlay();
-    playerTurn = askPlayerSelection();
+    //playerTurn = askPlayerSelection();
     outcome = playRound(playerTurn, computerTurn);
     displayOutcome(outcome, playerTurn, computerTurn);
-  }
+  //}
 }
 
 function startGame() {
@@ -59,5 +66,19 @@ function startGame() {
   rounds = Number(prompt("How many rounds would you like to play? ", 10));
   playGames(rounds);
 }
+
+
+rockBtn.addEventListener('click', e => {
+  playGames("rock")
+});
+
+paperBtn.addEventListener('click', e => {
+  playGames("paper")
+});
+
+scissorsBtn.addEventListener('click', e => {
+  playGames("scissors")
+});
+
 
 //startGame();w
