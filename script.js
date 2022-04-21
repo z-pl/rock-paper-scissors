@@ -60,4 +60,4 @@ function startGame() {
   playGames(rounds);
 }
 
-startGame();
+//startGame();w
