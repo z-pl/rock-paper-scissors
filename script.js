@@ -2,7 +2,8 @@ const rockBtn = document.querySelector(".btn-rock");
 const paperBtn = document.querySelector(".btn-paper");
 const scissorsBtn = document.querySelector(".btn-scissors");
 
-
+let computerScore = 0;
+let playerScore = 0;
 
 
 function computerPlay() {
@@ -41,6 +42,7 @@ function displayOutcome(outcome, playerSelection, computerSelection) {
   }
 }
 
+
 function askPlayerSelection() {
   let input = prompt("Choose between rock, paper and scissors: ");
   if (input != "rock" &&
@@ -52,19 +54,36 @@ function askPlayerSelection() {
   return input;
 }
 
+
 function playGames(playerTurn) {
-  //for (let i = 0; i < rounds; i++) {
+
+    //loop here
+
     computerTurn = computerPlay();
-    //playerTurn = askPlayerSelection();
     outcome = playRound(playerTurn, computerTurn);
+
+    playerScore = updateScore(outcome, playerScore, computerScore)[0];
+    computerScore = updateScore(outcome, playerScore, computerScore)[1];
+
     displayOutcome(outcome, playerTurn, computerTurn);
-  //}
+    console.log(playerScore)
+    console.log(computerScore)
 }
 
 function startGame() {
   alert("Welcome to my original ROCK, PAPER, SCISSORS game.")
   rounds = Number(prompt("How many rounds would you like to play? ", 10));
   playGames(rounds);
+}
+
+function updateScore(outcome, playerScore, computerScore) {
+  if (outcome == 1) {
+    playerScore++;
+  }
+  else if (outcome == 0) {
+    computerScore++
+  }
+  return [playerScore, computerScore]
 }
 
 
