@@ -1,6 +1,8 @@
 const rockBtn = document.querySelector(".btn-rock");
 const paperBtn = document.querySelector(".btn-paper");
 const scissorsBtn = document.querySelector(".btn-scissors");
+const playerScoreText = document.querySelector(".playerScore");
+const computerScoreText = document.querySelector(".computerScore");
 
 let computerScore = 0;
 let playerScore = 0;
@@ -65,9 +67,13 @@ function playGames(playerTurn) {
     playerScore = updateScore(outcome, playerScore, computerScore)[0];
     computerScore = updateScore(outcome, playerScore, computerScore)[1];
 
+
+    playerScoreText.innerHTML = playerScore.toString();
+    computerScoreText.innerHTML = computerScore.toString();
+
     displayOutcome(outcome, playerTurn, computerTurn);
-    console.log(playerScore)
-    console.log(computerScore)
+
+    checkFinishGame();
 }
 
 function startGame() {
@@ -83,7 +89,36 @@ function updateScore(outcome, playerScore, computerScore) {
   else if (outcome == 0) {
     computerScore++
   }
+
+
   return [playerScore, computerScore]
+}
+
+function checkFinishGame() {
+  if (playerScore === 5) {
+    setTimeout(() => {
+      alert("You win!");
+    }, 100)
+
+    restartScore();
+  }
+  else if (computerScore === 5) {
+    setTimeout(() => {
+      alert("You lose...")
+    }, 100);
+
+    restartScore();
+  }
+
+
+}
+
+function restartScore() {
+  playerScore = 0;
+  computerScore = 0;
+
+  playerScoreText.innerHTML = "0"
+  computerScoreText.innerHTML = "0";
 }
 
 
